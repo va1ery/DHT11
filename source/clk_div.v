@@ -14,7 +14,6 @@ module clk_div               // clk div 50 MHz to 1 МHz
 //  internal signals
     reg [CNT_SZ-1:0] cnt_clk; // current state counter clk
 
-
 //  counter clk
     always @(posedge CLK or negedge RST_n) begin
       if (!RST_n)
