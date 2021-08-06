@@ -1,8 +1,7 @@
 `timescale 10 ns/ 1 ns
-module DHT11_vlg_tst();
+module tb_dht11;
     parameter BYTE_SZ  = 8;           // widht byte
     parameter VALUE_SZ = 2 * BYTE_SZ; // widht value
-  
   
 //------------------------------------------------------------------------       
     reg                        CLK;         // clk 50 MHz
@@ -19,7 +18,6 @@ module DHT11_vlg_tst();
     reg                        en_dht_slv;  // enable DHT11
     reg                        dht_slv;     // transfer from DHT11
 
-
 //------------------------------------------------------------------------       
     assign IO_DHT11 = en_dht_slv ? dht_slv : 1'b1;
     assign strobe   = dut.strobe;
@@ -27,7 +25,7 @@ module DHT11_vlg_tst();
     assign fl_dht11_in     = dut.fl_dht11_in;
 
 //------------------------------------------------------------------------       
-    DHT11 dut
+    top_dht11 dut
         (
          .CLK(CLK),
          .RST_n(RST_n),
@@ -102,12 +100,10 @@ module DHT11_vlg_tst();
     
     always #1 CLK = ~CLK;
     
-    // initial begin
+    initial begin
       // $dumpvars;
-    // end   
-    
-    initial
-    #2510000 $finish;
+      #2510000 $finish;
+    end   
 
     
 endmodule

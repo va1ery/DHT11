@@ -1,4 +1,4 @@
-module DHT11
+module top_dht11
     #(parameter CCL_SZ   = 50,          // T = 1 uS
       parameter DATA_SZ  = 40,          // data width
       parameter BYTE_SZ  = 8,           // byte width
@@ -27,7 +27,6 @@ module DHT11
     wire fl_dht11_in; // falling edge of the data line from DHT11
     reg  cr_dht11_in; // current line from DHT11
     reg  pr_dht11_in; // previous line from DHT11
-    
     
 //------------------------------------------------------------------------    
     clk_div 

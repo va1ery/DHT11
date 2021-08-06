@@ -30,7 +30,6 @@
 *msim_transcript
 *.wlf
 *.tcl
-!DHT11_TEST_LEDR.tcl
 *.txt
 *~
 *example*
@@ -39,6 +38,7 @@
 
 /db/
 /greybox_tmp/
+/not_use/
 /incremental_db/
 /output_files/
 rtl_work/

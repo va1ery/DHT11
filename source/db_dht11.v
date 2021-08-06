@@ -1,4 +1,4 @@
-module DHT11_TEST_LEDR
+module db_dht11
     #(parameter BYTE_SZ  = 8,           // widht byte
       parameter VALUE_SZ = 2 * BYTE_SZ) // widht value  
     (CLK, I_SW, I_KEY, 
@@ -18,10 +18,9 @@ module DHT11_TEST_LEDR
     wire [VALUE_SZ-1:0] value;
     wire [9:0]          ledr;
     wire                RST_n;
-    
 
 //----------------------------------------------------------    
-    DHT11 DHT11
+    top_dht11 top_dht11
         (   
          .CLK(CLK), 
          .RST_n(RST_n), 
@@ -38,15 +37,16 @@ module DHT11_TEST_LEDR
     assign ledr[7:0] = I_SW ? value[BYTE_SZ+:BYTE_SZ] : value[BYTE_SZ-1:0];
 
 //----------------------------------------------------------     
-    always @(posedge CLK or negedge RST_n)
-        if (!RST_n)
-          begin
-            O_LEDR <= 10'b0;
-          end
-        else
-          begin
-            O_LEDR <= ledr;
-          end
-          
-          
+    always @(posedge CLK or negedge RST_n) begin
+      if (!RST_n)
+        begin
+          O_LEDR <= 10'b0;
+        end
+      else
+        begin
+          O_LEDR <= ledr;
+        end
+    end      
+
+    
 endmodule
